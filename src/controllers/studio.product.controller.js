@@ -14,11 +14,11 @@ const pick = require('../utils/pick');
 const getAllStudioProduct = catchAsync(async (req, res) => {
   let perPage = req.query.limit || 6;
   let page = req.query.page || 1;
-  let filter = pick(req.query, ['categoryStudioProductId', 'name']);
+  let filter = pick(req.query, ['categoryId', 'name']);
   let query = {};
 
-  if (filter.categoryStudioProductId) {
-    query.categoryStudioProductId = filter.categoryStudioProductId || {};
+  if (filter.categoryId) {
+    query.categoryId = filter.categoryId || {};
   }
   if (filter.name) {
     query.name = { $regex: filter.name, $options: 'i' };
